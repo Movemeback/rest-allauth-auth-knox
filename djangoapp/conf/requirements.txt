@@ -1,0 +1,7 @@
+django
+django-cors-headers
+djangorestframework
+psycopg2<=2.8.0
+docopt
+faker
+crypto

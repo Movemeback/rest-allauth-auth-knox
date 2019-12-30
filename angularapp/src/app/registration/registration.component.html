@@ -1,0 +1,42 @@
+<h2>Product Details</h2>
+<div class="columns">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title h5">
+          Registration
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="columns">
+        <div class="col-12">
+          <h2>Submit new answer:</h2>
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm.value)">
+            <div class="form-group">
+              <label for="first_name">First Name</label>
+              <textarea class="form-input" id="first_name" type="text" formControlName="first_name"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <textarea class="form-input" id="last_name" type="text" formControlName="last_name"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <textarea class="form-input" id="username" type="text" formControlName="username"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <textarea class="form-input" id="password" type="password" formControlName="password"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+            {{ result }}
+          </form>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>
