@@ -12,7 +12,7 @@ export class AppComponent implements OnInit  {
   constructor(private authService: AuthService) {}
 
   onLogout() {
-    this.authService.logout().subscribe((data) => window.location.href = 'http://localhost:8080/auth/login');
+    this.authService.logout().subscribe((data) => window.location.href = 'http://localhost:8080/login');
   }
 
   ngOnInit() {
@@ -22,7 +22,9 @@ export class AppComponent implements OnInit  {
         console.log('user session active')
       } else {
         console.log('user session inactive login redirect');
-        window.location.href = 'http://localhost:8080/auth/login'
+        if (window.location.href != 'http://localhost:8080/login') {
+          window.location.href = 'http://localhost:8080/login';
+        }
       }
     });
   }

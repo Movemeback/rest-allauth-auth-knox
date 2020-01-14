@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import {FormBuilder} from "@angular/forms";
 import {AuthService} from "../auth.service";
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm;
   result;
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(data) {
     console.log(data);
-    this.authService.login(data['username'], data['password']).subscribe( (response) => this.result = response );
+    this.authService.login(data['username'], data['password']).subscribe( (response) => {this.result = response; this.router.navigate(['/'])} );
   }
 
 }

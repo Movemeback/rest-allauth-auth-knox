@@ -55,6 +55,30 @@ def login_api(request):
 
 
 @csrf_exempt
+def login_api(request):
+    """
+    Shows login page and logs user.
+    """
+    logging.info('here')
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = authenticate(request,
+                            username=data.get('username'),
+                            password=data.get('password'))
+        if user is not None:
+            login(request, user)
+            logger.info('Audit: Login successful {}'.format(data))
+            return HttpResponse(json.dumps({'success': True}),
+                                content_type='application/json')
+        else:
+            logger.info('Audit: Login unsuccessful {}'.format(data))
+            return HttpResponse(json.dumps({'success': False}),
+                                content_type='application/json')
+
+    return HttpResponseNotAllowed()
+
+
+@csrf_exempt
 def signup_api(request):
     """
     Shows signup page and signups users.

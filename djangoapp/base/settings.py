@@ -163,6 +163,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8888',
     'http://localhost:8889',
     'http://localhost:8000',
+    'http://localhost:8080',
 )
 
 REST_FRAMEWORK = {
@@ -170,5 +171,9 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
