@@ -12,6 +12,7 @@
         <div class="columns">
 
         <div class="col-12">
+          <h2>Standard</h2>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
             <div class="form-group">
               <label for="username">username</label>
@@ -24,6 +25,25 @@
             <button class="btn btn-primary" type="submit">Login</button>
             {{ result }}
           </form>
+          <br />
+          <h2>django-rest-auth: standard login</h2>
+          <form [formGroup]="loginRestAuthForm" (ngSubmit)="onSubmitRestAuth(loginRestAuthForm.value)">
+            <div class="form-group">
+              <label for="username">username</label>
+              <input class="form-input" id="username" type="text" formControlName="username">
+            </div>
+            <div class="form-group">
+              <label for="password">password</label>
+              <input class="form-input" id="password" type="password" formControlName="password">
+            </div>
+            <button class="btn btn-primary" type="submit">Login</button>
+            {{ restAuthResult }}
+          </form>
+          <br />
+          <h2>django-rest-auth: linkedin login</h2>
+          <br />
+          <a class="btn btn-primary" href="/api/social-login/linkedin/get_link/?redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Faccounts%2Flinkedin_oauth2%2Flogin%2Fcallback%2F">Linkedin OAuth2 Login</a>
+          <br />
         </div>
       </div>
       </div>

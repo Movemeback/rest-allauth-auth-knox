@@ -22,7 +22,7 @@ export class AppComponent implements OnInit  {
         console.log('user session active')
       } else {
         console.log('user session inactive login redirect');
-        if (window.location.href != 'http://localhost:8080/login') {
+        if (window.location.href != 'http://localhost:8080/login' && window.location.href != 'http://localhost:8080/registration') {
           window.location.href = 'http://localhost:8080/login';
         }
       }

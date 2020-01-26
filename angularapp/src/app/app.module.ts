@@ -6,13 +6,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {QuestionListComponent} from "./question-list/question-list.component";
 import {QuestionDetailsComponent} from "./question-details/question-details.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {QuestionService} from "./question.service";
 import { UserComponent } from './user/user.component';
 import {UserService} from "./user.service";
 import {AuthService} from "./auth.service";
 import {LoginComponent} from "./login/login.component";
 import {RegistrationComponent} from "./registration/registration.component";
+import {RestAuthService} from "./restauth.service";
+import {AuthenticationInterceptor} from "./authentication.interceptor";
 
 
 @NgModule({
@@ -37,7 +39,11 @@ import {RegistrationComponent} from "./registration/registration.component";
       { path: 'registration', component: RegistrationComponent },
     ])
   ],
-  providers: [AuthService, QuestionService, UserService],
+  providers: [AuthService, RestAuthService, QuestionService, UserService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,11 @@ export class AuthService {
       return this.http.post('http://localhost:8080/api/v1/auth/login', {username: username, password: password})
     }
 
+
+
     register(firstName, lastName, username, password) {
       return this.http.post('http://localhost:8080/api/v1/auth/register', {username: username, password: password, first_name: firstName, last_name: lastName})
     }
 }
+
+

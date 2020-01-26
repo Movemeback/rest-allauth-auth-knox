@@ -1,7 +1,10 @@
-django
+django<2.1
 django-cors-headers
 djangorestframework
+django-rest-auth
+django-allauth>=0.25.0
 psycopg2<=2.8.0
 docopt
 faker
 crypto
+django-rest-knox
